@@ -1,0 +1,195 @@
+---
+title: "Uniform sampling in a convex hull"
+author: "Stéphane Laurent"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Uniform sampling in a convex hull}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+As an illustration of the `uniformly` package, we will show how to 
+uniformly sample some points in a convex hull.
+
+We give an illustration in dimension 3 (in dimension 2, use the function 
+`runif_in_polygon`). 
+
+Let's store the vertices of an icosahedron in a matrix `vs`:
+
+```{r}
+vs <- t(rgl::icosahedron3d()$vb[1:3,])
+head(vs)
+```
+
+The icosahedron is convex, therefore its convex hull is itself. 
+
+The `delaunayn` function of the `geometry` package calculates a "triangulation" 
+(*tetrahedralization* in dimension 3) of the convex hull of a set of points. 
+We use it to get a tetrahedralization of our icoshaedron:
+
+```{r, message=FALSE}
+library(geometry)
+tetrahedra <- delaunayn(vs, options="Qz")
+head(tetrahedra)
+```
+
+Each row of the `tetrahedra` matrix is a vector of four identifiers of the 
+vertices defining a tetrahedron.
+
+Now, we calculate the volumes of each of these tetrahedra with the 
+`volume_tetrahedron` function:
+
+```{r}
+library(uniformly)
+volumes <- 
+  apply(tetrahedra, 1, 
+        function(t){
+          volume_tetrahedron(vs[t[1],], vs[t[2],], vs[t[3],], vs[t[4],])
+        })
+```
+
+We normalize the volumes:
+
+```{r}
+probs <- volumes/sum(volumes)
+```
+
+Now, here is the algorithm to uniformly sample a point in the icosahedron:
+
+- select a tetrahedron at random, with probability given by the normalized volumes;
+
+- uniformly sample a point in the picked tetrahedron.
+
+That is:
+
+```{r}
+i <- sample.int(nrow(tetrahedra), 1, prob=probs)
+th <- tetrahedra[i,]
+runif_in_tetrahedron(1, vs[th[1],], vs[th[2],], vs[th[3],], vs[th[4],])
+```
+
+Let's use the algorithm to sample 100 random points:
+
+```{r}
+nsims <- 100
+sims <- matrix(NA_real_, nrow=nsims, ncol=3)
+for(k in 1:nsims){
+  th <- tetrahedra[sample.int(nrow(tetrahedra), 1, prob=probs),]
+  sims[k,] <- runif_in_tetrahedron(1, vs[th[1],], vs[th[2],], vs[th[3],], vs[th[4],])
+}
+```
+
+```{r}
+library(rgl)
+open3d(windowRect=c(100,100,600,600))
+shade3d(icosahedron3d(), color="red", alpha=0.3)
+points3d(sims)
+rglwidget()
+```
+
+We can proceed in the same way in higher dimension, using the functions 
+`volume_simplex` and `runif_in_simplex` instead of the functions 
+`volume_tetrahedron` and `runif_in_tetrahedron`.
+
+
+## Sampling from a triangulated object
+
+Note that the convexity is not the *sine qua non* condition to apply the 
+above procedure: the ingredient we need is the "triangulation" of the object. 
+We took a convex shape because `delaunayn` provides the triangulation of a 
+convex shape. 
+
+Let's give an example for a 3D star. Here is the star:
+
+```{r}
+vs <- rbind(
+  c(7.889562, 1.150329, -2.173651),
+  c(2.212808, 1.150329, -2.230414),
+  c(0.068023, 1.150328, -7.923502),
+  c(-2.151306, 1.150329, -2.254857),
+  c(-7.817406, 1.150328, -2.261558),
+  c(-3.523133, 1.150328, 1.888122),
+  c(-4.869315, 1.150328, 6.987552),
+  c(-0.006854, 1.150329, 4.473047),
+  c(4.838127, 1.150328, 7.041885),
+  c(3.538153, 1.150329, 1.927652),
+  c(0.033757, 0.000000, -0.314657),
+  c(0.035668, 2.269531, -0.312831)
+)
+faces <- rbind(
+  c(1, 11, 2),
+  c(2, 11, 3),
+  c(3, 11, 4),
+  c(4, 11, 5),
+  c(5, 11, 6),
+  c(6, 11, 7),
+  c(7, 11, 8),
+  c(8, 11, 9),
+  c(9, 11, 10),
+  c(10, 11, 1),
+  c(1, 12, 10),
+  c(10, 12, 9),
+  c(9, 12, 8),
+  c(8, 12, 7),
+  c(7, 12, 6),
+  c(6, 12, 5),
+  c(5, 12, 4),
+  c(4, 12, 3),
+  c(3, 12, 2),
+  c(2, 12, 1)
+)
+open3d(windowRect=c(100,100,600,600))
+for(i in 1:nrow(faces)){
+ triangles3d(rbind(
+   vs[faces[i,1],], 
+   vs[faces[i,2],], 
+   vs[faces[i,3],]), 
+   color="red", alpha=0.4)
+}
+rglwidget()
+```
+
+This star is not convex but it is star-shaped with respect to its centroid, 
+and its faces are triangular. 
+Therefore we get a tetrahedralization by joining the centroid to each of the 
+triangular faces. 
+
+Let's calculate the volumes of these tetrahedra:
+
+```{r}
+centroid <- colMeans(vs)
+volumes <- apply(faces, 1,function(f){
+  volume_tetrahedron(vs[f[1],], vs[f[2],], vs[f[3],], centroid)
+})
+probs <- volumes/sum(volumes)
+```
+
+Now we pick a face at random, with probability given by the normalized volumes, 
+and we sample in the corresponding tetrahedron:
+
+```{r}
+nsims <- 500
+sims <- matrix(NA_real_, nrow=nsims, ncol=3)
+for(k in 1:nsims){
+  f <- faces[sample.int(nrow(faces), 1, prob=probs),]
+  sims[k,] <- runif_in_tetrahedron(1, vs[f[1],], vs[f[2],], vs[f[3],], centroid)
+}
+```
+
+And now, let's add the sampled points:
+
+```{r}
+points3d(sims)
+rglwidget()
+```
+
