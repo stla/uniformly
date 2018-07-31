@@ -11,7 +11,7 @@
 #' arbitrary dimension.
 #'
 #' @examples
-#' \dontrun{library(rgl)
+#' \donttest{library(rgl)
 #' tetrahedron <- tetrahedron3d()
 #' shade3d(tetrahedron, color="red", alpha=0.3)
 #' vs <- tetrahedron$vb[1:3,]

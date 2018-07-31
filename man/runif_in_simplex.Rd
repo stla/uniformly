@@ -24,6 +24,6 @@ In dimension 3, you can use \code{\link{runif_in_tetrahedron}} instead.
 \examples{
 simplex <- rbind(c(0,0,0), c(1,0,0), c(1,1,0), c(1,1,2))
 sims <- runif_in_simplex(1000, simplex)
-\dontrun{library(rgl)
+\donttest{library(rgl)
 points3d(sims)}
 }

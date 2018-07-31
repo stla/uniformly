@@ -18,7 +18,7 @@ The simulations in a \code{n} times \code{3} matrix.
 Uniform sampling in a tetrahedron (in dimension 3).
 }
 \examples{
-\dontrun{library(rgl)
+\donttest{library(rgl)
 tetrahedron <- tetrahedron3d()
 shade3d(tetrahedron, color="red", alpha=0.3)
 vs <- tetrahedron$vb[1:3,]

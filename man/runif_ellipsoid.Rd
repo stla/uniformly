@@ -36,7 +36,7 @@ sims <- runif_on_ellipsoid(30, A, r)
 plot(sims, xlim=c(-2,2), ylim=c(-3,3), asp=1, pch=19)
 sims <- runif_in_ellipsoid(100, A, r)
 plot(sims, xlim=c(-2,2), ylim=c(-3,3), asp=1, pch=19)
-\dontrun{# 3D example
+\donttest{# 3D example
 A <- matrix(c(5,1,1, 1,3,1, 1,1,1), ncol=3)
 r <- 2
 # draw the ellipsoid

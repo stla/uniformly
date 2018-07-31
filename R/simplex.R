@@ -16,7 +16,7 @@
 #' in an arbitrary simplex.
 #'
 #' @examples
-#' \dontrun{library(rgl)
+#' \donttest{library(rgl)
 #' sims <- runif_on_unitSimplex(300, d=3)
 #' points3d(sims)}
 NULL
@@ -59,7 +59,7 @@ runif_in_unitSimplex <- function(n, d){
 #' @examples
 #' simplex <- rbind(c(0,0,0), c(1,0,0), c(1,1,0), c(1,1,2))
 #' sims <- runif_in_simplex(1000, simplex)
-#' \dontrun{library(rgl)
+#' \donttest{library(rgl)
 #' points3d(sims)}
 runif_in_simplex <- function(n, simplex){
   d <- ncol(simplex); nv <- nrow(simplex)

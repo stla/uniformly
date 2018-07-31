@@ -22,7 +22,7 @@ The simulations in a \code{n} times \code{d} matrix.
 Uniform sampling on or in a unit simplex (arbitrary dimension).
 }
 \examples{
-\dontrun{library(rgl)
+\donttest{library(rgl)
 sims <- runif_on_unitSimplex(300, d=3)
 points3d(sims)}
 }
