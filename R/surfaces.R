@@ -1,5 +1,5 @@
 #' Sphere surface
-#' @description Surface of a d-dimensional sphere.
+#' @description Surface of a sphere (arbitrary dimension).
 #'
 #' @param d dimension of the space
 #' @param r radius of the sphere
@@ -96,4 +96,17 @@ surface_stri <- function(r, v1, v2, v3){
 #' surface_triangle(c(0,0), c(0,1), c(1,0))
 surface_triangle <- function(v1, v2, v3){
   0.5*abs((v2[1L]-v1[1L])*(v3[2L]-v1[2L]) - (v3[1L]-v1[1L])*(v2[2L]-v1[2L]))
+}
+
+
+#' Torus surface
+#' @description Surface of a torus.
+#' 
+#' @param R major radius
+#' @param r minor radius
+#' 
+#' @return The surface area of the torus.
+#' @export
+surface_torus <- function(R, r){
+  4 * pi*pi * R * r
 }

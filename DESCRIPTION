@@ -1,8 +1,8 @@
 Package: uniformly
 Type: Package
 Title: Uniform Sampling
-Version: 0.1.0
-Date: 2018-07-31
+Version: 0.1.0.9000
+Date: 2018-08-02
 Author: Stéphane Laurent
 Maintainer: Stéphane Laurent <laurent_step@yahoo.fr>
 Description: Uniform sampling on various geometric shapes, such as spheres, ellipsoids, simplices.

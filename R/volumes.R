@@ -116,3 +116,16 @@ volume_tetrahedron <- function(v1,v2,v3,v4){
 volume_pball <- function(d, p, r=1){
   (2*gamma(1+1/p)*r)^d / gamma(d/p+1)
 }
+
+
+#' Torus volume
+#' @description Volume of a torus.
+#' 
+#' @param R major radius
+#' @param r minor radius
+#' 
+#' @return The volume of the torus.
+#' @export
+volume_torus <- function(R, r){
+  2 * pi*pi * R * r*r
+}

@@ -16,7 +16,7 @@ The surface of the sphere of radius \code{r} in the
 \code{d}-dimensional space.
 }
 \description{
-Surface of a d-dimensional sphere.
+Surface of a sphere (arbitrary dimension).
 }
 \examples{
 r <- 2
