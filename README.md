@@ -4,6 +4,6 @@
 on unit simplex, in simplex, on/in cube
 
 - *Dimension 3:* sampling on spherical patch, on spherical triangle, 
-on hemisphere, in tetrahedron
+on hemisphere, in tetrahedron, on/in torus
 
 - *Dimension 2:* sampling on/in triangle, in star-shaped polygon, in annulus
