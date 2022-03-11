@@ -1,4 +1,4 @@
-# uniformly 0.1.0.9001
+# uniformly 0.2.0
 
 * Sampling on/in torus.
 
@@ -7,7 +7,7 @@
 
 # uniformly 0.1.0
 
-* First release.
+First release.
 
 
 

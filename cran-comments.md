@@ -1,14 +1,14 @@
 ## Test environments
 
-* Windows 7, R 3.4.4 and R 3.5.1
-* win-builder (devel and release)
+* Windows 10, R 4.1.2
+* win-builder devel
+* Ubuntu 20, via Github action
+* mac-builder
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
-
-* This is a new release.
+OK
 
 ## Reverse dependencies
 
-This is a new release, so there are no reverse dependencies.
+No problem, since there are only new functions.
