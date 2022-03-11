@@ -129,3 +129,15 @@ volume_pball <- function(d, p, r=1){
 volume_torus <- function(R, r){
   2 * pi*pi * R * r*r
 }
+
+#' Spherical cap volume
+#' @description Volume of a spherical cap.
+#' 
+#' @param r radius of the sphere
+#' @param h height of the cap
+#' 
+#' @return The volume of the spherical cap.
+#' @export
+volume_sphericalCap <- function(r, h){
+  pi * h * h * (r - h/3)
+}

@@ -22,8 +22,9 @@ Sampling on a hemisphere according to the Phong density
 (dimension 3).
 }
 \examples{
-\dontrun{library(rgl)
-sims <- rphong_on_hemisphere(400, alpha=10)
-spheres3d(0, 0, 0, color="red", alpha=0.5)
+\dontrun{
+library(rgl)
+sims <- rphong_on_hemisphere(400, alpha = 10)
+spheres3d(0, 0, 0, color = "red", alpha = 0.5)
 points3d(sims)}
 }

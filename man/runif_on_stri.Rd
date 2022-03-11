@@ -21,8 +21,9 @@ Uniform sampling on a spherical triangle (in dimension 3).
 }
 \examples{
 # sampling on the first orthant:
-sims <- runif_on_stri(100, v1=c(1,0,0), v2=c(0,1,0), v3=c(0,0,1))
-\dontrun{library(rgl)
-spheres3d(0, 0, 0, color="red", alpha=0.5)
+sims <- runif_on_stri(100, v1 = c(1, 0, 0), v2 = c(0, 1, 0), v3 = c(0, 0, 1))
+\dontrun{
+library(rgl)
+spheres3d(0, 0, 0, color = "red", alpha = 0.5)
 points3d(sims)}
 }

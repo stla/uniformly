@@ -110,3 +110,15 @@ surface_triangle <- function(v1, v2, v3){
 surface_torus <- function(R, r){
   4 * pi*pi * R * r
 }
+
+#' Spherical cap surface
+#' @description Surface of a spherical cap.
+#' 
+#' @param r radius of the sphere
+#' @param h height of the cap
+#' 
+#' @return The surface area of the spherical cap.
+#' @export
+surface_sphericalCap <- function(r, h){
+  2 * pi * r * h
+}

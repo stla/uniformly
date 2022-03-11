@@ -20,12 +20,12 @@ Uniform sampling in a tetrahedron (in dimension 3).
 \examples{
 \donttest{library(rgl)
 tetrahedron <- tetrahedron3d()
-shade3d(tetrahedron, color="red", alpha=0.3)
-vs <- tetrahedron$vb[1:3,]
-sims <- runif_in_tetrahedron(100, vs[,1], vs[,2], vs[,3], vs[,4])
+shade3d(tetrahedron, color = "red", alpha = 0.3)
+vs <- tetrahedron$vb[1L:3L, ]
+sims <- runif_in_tetrahedron(100, vs[, 1], vs[, 2], vs[, 3], vs[, 4])
 points3d(sims)}
 }
 \seealso{
 \code{\link{runif_in_simplex}} for sampling in a simplex in
-arbitrary dimension.
+  arbitrary dimension.
 }

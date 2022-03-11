@@ -12,12 +12,12 @@
 #' @importFrom stats rexp
 #'
 #' @seealso \code{\link{runif_in_tetrahedron}} for sampling in an arbitrary
-#' tetrahedron in dimension 3; \code{\link{runif_in_simplex}} for sampling
-#' in an arbitrary simplex.
+#'   tetrahedron in dimension 3; \code{\link{runif_in_simplex}} for sampling
+#'   in an arbitrary simplex.
 #'
 #' @examples
 #' \donttest{library(rgl)
-#' sims <- runif_on_unitSimplex(300, d=3)
+#' sims <- runif_on_unitSimplex(300, d = 3)
 #' points3d(sims)}
 NULL
 
@@ -39,8 +39,8 @@ runif_on_unitSimplex <- function(n, d){
 #' @rdname runif_unitSimplex
 #' @export
 runif_in_unitSimplex <- function(n, d){
-  e <- matrix(rexp(n*(d+1),1), nrow=n, ncol=d+1L)
-  e[,-1L] / rowSums(e)
+  e <- matrix(rexp(n*(d+1), 1), nrow=n, ncol=d+1L)
+  e[, -1L] / rowSums(e)
 }
 
 
@@ -49,7 +49,7 @@ runif_in_unitSimplex <- function(n, d){
 #'
 #' @param n number of simulations
 #' @param simplex a \code{(d+1)} times \code{d} matrix giving the vertices of
-#' the simplex (rows)
+#'   the simplex (rows)
 #'
 #' @return The simulations in a \code{n} times \code{d} matrix.
 #' @export

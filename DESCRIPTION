@@ -1,17 +1,16 @@
 Package: uniformly
 Type: Package
 Title: Uniform Sampling
-Version: 0.1.0.9000
-Date: 2018-08-02
+Version: 0.1.0.9001
+Date: 2022-03-11
 Author: Stéphane Laurent
 Maintainer: Stéphane Laurent <laurent_step@yahoo.fr>
 Description: Uniform sampling on various geometric shapes, such as spheres, ellipsoids, simplices.
 License: GPL-3
 Encoding: UTF-8
-LazyData: true
 URL: https://github.com/stla/uniformly
 BugReports: https://github.com/stla/uniformly/issues
-RoxygenNote: 6.0.1
+RoxygenNote: 7.1.2
 Imports: stats, pgnorm
 Suggests: knitr,
     rmarkdown,

@@ -22,6 +22,6 @@ The simulations in a \code{n} times \code{2} matrix.
 Uniform sampling in an annulus (dimension 2).
 }
 \examples{
-sims <- runif_in_annulus(100, c(0,0), 1, 2)
-plot(sims, xlim = c(-2,2), ylim = c(-2,2), asp = 1, pch = 19)
+sims <- runif_in_annulus(100, c(0, 0), 1, 2)
+plot(sims, xlim = c(-2, 2), ylim = c(-2, 2), asp = 1, pch = 19)
 }

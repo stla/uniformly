@@ -25,8 +25,8 @@ Uniform sampling on a sphere or in a sphere, in arbitrary
 dimension.
 }
 \examples{
-sims <- runif_on_sphere(20, d=2)
-plot(sims, xlim=c(-1,1), ylim=c(-1,1), asp=1, pch=19)
-sims <- runif_in_sphere(100, d=2)
-plot(sims, xlim=c(-1,1), ylim=c(-1,1), asp=1, pch=19)
+sims <- runif_on_sphere(20, d = 2)
+plot(sims, xlim = c(-1, 1), ylim = c(-1, 1), asp = 1, pch = 19)
+sims <- runif_in_sphere(100, d = 2)
+plot(sims, xlim = c(-1, 1), ylim = c(-1, 1), asp = 1, pch = 19)
 }

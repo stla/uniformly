@@ -8,14 +8,14 @@
 #' @export
 #'
 #' @seealso \code{\link{runif_in_simplex}} for sampling in a simplex in
-#' arbitrary dimension.
+#'   arbitrary dimension.
 #'
 #' @examples
 #' \donttest{library(rgl)
 #' tetrahedron <- tetrahedron3d()
-#' shade3d(tetrahedron, color="red", alpha=0.3)
-#' vs <- tetrahedron$vb[1:3,]
-#' sims <- runif_in_tetrahedron(100, vs[,1], vs[,2], vs[,3], vs[,4])
+#' shade3d(tetrahedron, color = "red", alpha = 0.3)
+#' vs <- tetrahedron$vb[1L:3L, ]
+#' sims <- runif_in_tetrahedron(100, vs[, 1], vs[, 2], vs[, 3], vs[, 4])
 #' points3d(sims)}
 runif_in_tetrahedron <- function(n, v1, v2, v3, v4){
   out <- matrix(NA_real_, nrow=n, ncol=3L)

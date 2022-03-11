@@ -12,16 +12,18 @@
 #'
 #' @examples
 #' R <- 3; r <- 2
-#' sims_on <- runif_on_torus(50, R=R, r=r)
-#' sims_in <- runif_in_torus(50, R=R, r=r)
+#' sims_on <- runif_on_torus(50, R = R, r = r)
+#' sims_in <- runif_in_torus(50, R = R, r = r)
 #' \donttest{library(misc3d)
-#' fx <- function(u,v) (R+r*cos(u))*cos(v)
-#' fy <- function(u,v) (R+r*cos(u))*sin(v)
+#' fx <- function(u,v) (R+r*cos(u)) * cos(v)
+#' fy <- function(u,v) (R+r*cos(u)) * sin(v)
 #' fz <- function(u,v) r*sin(u)
-#' parametric3d(fx, fy, fz, umin=0, umax=2*pi, vmin=0, vmax=2*pi, alpha=0.3)
+#' parametric3d(
+#'   fx, fy, fz, umin = 0, umax = 2*pi, vmin = 0, vmax = 2*pi, alpha = 0.3
+#' )
 #' library(rgl)
 #' points3d(sims_on)
-#' points3d(sims_in, color="red")}
+#' points3d(sims_in, color = "red")}
 NULL
 
 #' @rdname runif_torus
@@ -32,7 +34,7 @@ runif_on_torus <- function(n, R, r){
   Phi <- runif(n, 0, 2*pi)
   while(j < n){
     Theta <- runif(1L, 0, 2*pi)
-    h <- R+r*cos(Theta)
+    h <- R + r*cos(Theta)
     if(runif(1L, 0, R+r) <= h){
       j <- j+1L
       out[j,] <- c(h*cos(Phi[j]),  h*sin(Phi[j]), r*sin(Theta))
@@ -53,11 +55,9 @@ runif_in_torus <- function(n, R, r){
     alpha <- runif(1L, 0, 2*pi)
     X <- R + r*U*cos(alpha)
     if(runif(1L, 0, R+r) > X) next
-    j <- j + 1
+    j <- j + 1L
     Theta <- runif(1L, 0, 2*pi)
-    out[j,] <- c(cos(Theta)*X, sin(Theta)*X, r*U*sin(alpha))
+    out[j, ] <- c(cos(Theta)*X, sin(Theta)*X, r*U*sin(alpha))
   }
   out  
 }
-
-

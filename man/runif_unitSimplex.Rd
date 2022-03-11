@@ -23,11 +23,11 @@ Uniform sampling on or in a unit simplex (arbitrary dimension).
 }
 \examples{
 \donttest{library(rgl)
-sims <- runif_on_unitSimplex(300, d=3)
+sims <- runif_on_unitSimplex(300, d = 3)
 points3d(sims)}
 }
 \seealso{
 \code{\link{runif_in_tetrahedron}} for sampling in an arbitrary
-tetrahedron in dimension 3; \code{\link{runif_in_simplex}} for sampling
-in an arbitrary simplex.
+  tetrahedron in dimension 3; \code{\link{runif_in_simplex}} for sampling
+  in an arbitrary simplex.
 }

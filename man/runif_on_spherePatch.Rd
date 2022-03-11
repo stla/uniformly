@@ -29,9 +29,11 @@ A sphere patch is the part of the sphere whose polar angles
 }
 \examples{
 # sampling on the first orthant:
-sims <- runif_on_spherePatch(100, phi1=0, phi2=pi/2, theta1=0, theta2=pi/2)
-\dontrun{library(rgl)
-spheres3d(0, 0, 0, color="red", alpha=0.5)
+sims <- 
+  runif_on_spherePatch(100, phi1 = 0, phi2 = pi/2, theta1 = 0, theta2 = pi/2)
+\dontrun{
+library(rgl)
+spheres3d(0, 0, 0, color = "red", alpha = 0.5)
 points3d(sims)}
 }
 \seealso{

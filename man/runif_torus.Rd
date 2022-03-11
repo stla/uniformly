@@ -25,14 +25,16 @@ Uniform sampling on or in a torus (dimension 3).
 }
 \examples{
 R <- 3; r <- 2
-sims_on <- runif_on_torus(50, R=R, r=r)
-sims_in <- runif_in_torus(50, R=R, r=r)
+sims_on <- runif_on_torus(50, R = R, r = r)
+sims_in <- runif_in_torus(50, R = R, r = r)
 \donttest{library(misc3d)
-fx <- function(u,v) (R+r*cos(u))*cos(v)
-fy <- function(u,v) (R+r*cos(u))*sin(v)
+fx <- function(u,v) (R+r*cos(u)) * cos(v)
+fy <- function(u,v) (R+r*cos(u)) * sin(v)
 fz <- function(u,v) r*sin(u)
-parametric3d(fx, fy, fz, umin=0, umax=2*pi, vmin=0, vmax=2*pi, alpha=0.3)
+parametric3d(
+  fx, fy, fz, umin = 0, umax = 2*pi, vmin = 0, vmax = 2*pi, alpha = 0.3
+)
 library(rgl)
 points3d(sims_on)
-points3d(sims_in, color="red")}
+points3d(sims_in, color = "red")}
 }

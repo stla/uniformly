@@ -26,9 +26,9 @@ The simulations in a \code{n} times \code{d} matrix.
 Uniform sampling on or in a cube (arbitrary dimension).
 }
 \examples{
-sims <- runif_on_cube(60, d=2)
-plot(sims, xlim=c(-1,1), ylim=c(-1,1), pch=19, asp=1)
-\donttest{sims <- runif_in_cube(50, d=3)
+sims <- runif_on_cube(60, d = 2)
+plot(sims, xlim = c(-1,1), ylim = c(-1,1), pch = 19, asp = 1)
+\donttest{sims <- runif_in_cube(50, d = 3)
 library(scatterplot3d)
-scatterplot3d(sims, pch=19, highlight.3d=TRUE, asp=1)}
+scatterplot3d(sims, pch = 19, highlight.3d = TRUE, asp = 1)}
 }

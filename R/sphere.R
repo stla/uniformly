@@ -12,10 +12,10 @@
 #' @importFrom stats runif rnorm
 #'
 #' @examples
-#' sims <- runif_on_sphere(20, d=2)
-#' plot(sims, xlim=c(-1,1), ylim=c(-1,1), asp=1, pch=19)
-#' sims <- runif_in_sphere(100, d=2)
-#' plot(sims, xlim=c(-1,1), ylim=c(-1,1), asp=1, pch=19)
+#' sims <- runif_on_sphere(20, d = 2)
+#' plot(sims, xlim = c(-1, 1), ylim = c(-1, 1), asp = 1, pch = 19)
+#' sims <- runif_in_sphere(100, d = 2)
+#' plot(sims, xlim = c(-1, 1), ylim = c(-1, 1), asp = 1, pch = 19)
 NULL
 
 #' @rdname runif_sphere
@@ -51,9 +51,11 @@ runif_in_sphere <- function(n, d, r=1){
 #'
 #' @examples
 #' # sampling on the first orthant:
-#' sims <- runif_on_spherePatch(100, phi1=0, phi2=pi/2, theta1=0, theta2=pi/2)
-#' \dontrun{library(rgl)
-#' spheres3d(0, 0, 0, color="red", alpha=0.5)
+#' sims <- 
+#'   runif_on_spherePatch(100, phi1 = 0, phi2 = pi/2, theta1 = 0, theta2 = pi/2)
+#' \dontrun{
+#' library(rgl)
+#' spheres3d(0, 0, 0, color = "red", alpha = 0.5)
 #' points3d(sims)}
 runif_on_spherePatch <- function(n, r=1, phi1, phi2, theta1, theta2){
   sims1 <- runif(n)
@@ -76,9 +78,10 @@ runif_on_spherePatch <- function(n, r=1, phi1, phi2, theta1, theta2){
 #'
 #' @examples
 #' # sampling on the first orthant:
-#' sims <- runif_on_stri(100, v1=c(1,0,0), v2=c(0,1,0), v3=c(0,0,1))
-#' \dontrun{library(rgl)
-#' spheres3d(0, 0, 0, color="red", alpha=0.5)
+#' sims <- runif_on_stri(100, v1 = c(1, 0, 0), v2 = c(0, 1, 0), v3 = c(0, 0, 1))
+#' \dontrun{
+#' library(rgl)
+#' spheres3d(0, 0, 0, color = "red", alpha = 0.5)
 #' points3d(sims)}
 runif_on_stri <- function(n, r=1, v1, v2, v3){
   sides <- stri_vertices2sides( 1, v1, v2, v3 )
@@ -120,25 +123,50 @@ runif_on_stri <- function(n, r=1, v1, v2, v3){
   r * out
 }
 
+#' Uniform sampling on a spherical cap
+#' @description Uniform sampling on a spherical cap (in dimension 3).
+#'
+#' @param n number of simulations
+#' @param r radius of the sphere
+#' @param h height of the cap
+#'
+#' @return The simulations in a \code{n} times \code{3} matrix.
+#' @export
+#'
+#' @examples
+#' sims <- runif_on_sphericalCap(500, r = 2, h = 1)
+#' \dontrun{
+#' library(rgl)
+#' spheres3d(0, 0, 0, radius = 2, color = "red", alpha = 0.5)
+#' points3d(sims)}
+runif_on_sphericalCap <- function(n, r = 1, h){
+  stopifnot(h > 0, h < 2*r)
+  xy <- runif_in_sphere(n, 2L, 1)
+  k <- h * apply(xy, 1L, crossprod)
+  s <- sqrt(h * (2*r - k))
+  cbind(s*xy, r-k)
+}
+
 #' Sampling on hemisphere
 #' @description Sampling on a hemisphere according to the Phong density
 #' (dimension 3).
 #'
 #' @param n number of simulations
 #' @param alpha parameter of the Phong density, a positive number;
-#' \code{0} for uniform sampling (default)
+#'   \code{0} for uniform sampling (default)
 #' @param r radius
 #'
 #' @return The simulations in a \code{n} times \code{3} matrix.
 #' @export
 #'
 #' @examples
-#' \dontrun{library(rgl)
-#' sims <- rphong_on_hemisphere(400, alpha=10)
-#' spheres3d(0, 0, 0, color="red", alpha=0.5)
+#' \dontrun{
+#' library(rgl)
+#' sims <- rphong_on_hemisphere(400, alpha = 10)
+#' spheres3d(0, 0, 0, color = "red", alpha = 0.5)
 #' points3d(sims)}
-rphong_on_hemisphere <- function(n, alpha=0, r=1){
-  cosphi <- runif(n) ^ (1/(1+alpha))
+rphong_on_hemisphere <- function(n, alpha = 0, r = 1){
+  cosphi <- runif(n)^(1/(1+alpha))
   sinphi <- sin(acos(cosphi))
   theta <- runif(n, 0, 2*pi)
   r * cbind(cos(theta)*sinphi, sin(theta)*sinphi, cosphi)

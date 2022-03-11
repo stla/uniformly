@@ -23,10 +23,10 @@ Uniform sampling in a polygon (dimension 2).
 }
 \details{
 This function works for a star-shaped polygon, that is, a polygon
-that contains a point from which the entire polygon boundary is visible.
-This point must be given in the \code{center} argument. If the polygon is
-convex, any point inside the polygon is suitable (thus the default option
-of the \code{center} argument is appropriate in this case).
+  that contains a point from which the entire polygon boundary is visible.
+  This point must be given in the \code{center} argument. If the polygon is
+  convex, any point inside the polygon is suitable (thus the default option
+  of the \code{center} argument is appropriate in this case).
 }
 \examples{
 vs <- matrix(c(0.951056516295154, 0.309016994374947,
@@ -41,5 +41,5 @@ vs <- matrix(c(0.951056516295154, 0.309016994374947,
                0, -0.381966011250105),
              ncol=2, byrow=TRUE)
 sims <- runif_in_polygon(500, vs)
-plot(sims, xlim=c(-1,1), ylim=c(-1,1), pch=19, asp=1)
+plot(sims, xlim = c(-1, 1), ylim = c(-1, 1), pch = 19, asp = 1)
 }

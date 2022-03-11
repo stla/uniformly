@@ -22,6 +22,6 @@ The simulations in a \code{n} times \code{d} matrix.
 Uniform sampling in a p-ball (arbitrary dimension).
 }
 \examples{
-sims <- runif_in_pball(500, d=2, p=1)
-plot(sims, xlim=c(-1,1), ylim=c(-1,1), asp=1)
+sims <- runif_in_pball(500, d = 2, p = 1)
+plot(sims, xlim = c(-1, 1), ylim = c(-1, 1), asp = 1)
 }

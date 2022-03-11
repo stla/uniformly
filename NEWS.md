@@ -1,6 +1,8 @@
-# uniformly 0.1.0.9000
+# uniformly 0.1.0.9001
 
-* Simulation on/in torus
+* Sampling on/in torus.
+
+* Sampling on spherical cap.
 
 
 # uniformly 0.1.0
