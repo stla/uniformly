@@ -1,11 +1,6 @@
-## Note
-
-I changed my mail address. 
-
-
 ## Test environments
 
-* Windows 10, R 4.1.2
+* Linux mint 20, R 4.3.0
 * win-builder devel
 * Ubuntu 20, via Github action
 * mac-builder
@@ -18,4 +13,4 @@ OK
 
 ## Reverse dependencies
 
-No problem, since there are only new functions.
+No problem.

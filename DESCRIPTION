@@ -1,21 +1,26 @@
-Package: uniformly
 Type: Package
+Package: uniformly
 Title: Uniform Sampling
-Version: 0.2.0
-Date: 2022-03-11
+Version: 0.3.0
+Date: 2023-05-19
 Author: Stéphane Laurent
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
-Description: Uniform sampling on various geometric shapes, such as spheres, ellipsoids, simplices.
+Description: Uniform sampling on various geometric shapes, such as
+    spheres, ellipsoids, simplices.
 License: GPL-3
-Encoding: UTF-8
 URL: https://github.com/stla/uniformly
 BugReports: https://github.com/stla/uniformly/issues
-RoxygenNote: 7.1.2
-Imports: stats, pgnorm
-Suggests: knitr,
-    rmarkdown,
+Imports: 
+    pgnorm,
+    stats
+Suggests: 
     geometry,
-    rgl,
+    knitr,
     misc3d,
+    rgl,
+    rmarkdown,
     scatterplot3d
-VignetteBuilder: knitr
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+RoxygenNote: 7.2.3
