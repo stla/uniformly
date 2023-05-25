@@ -4,3 +4,4 @@
 ^cran-comments\.md$
 ^\.github$
 ^inst/essais$
+^CRAN-SUBMISSION$

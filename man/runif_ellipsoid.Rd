@@ -2,10 +2,13 @@
 % Please edit documentation in R/ellipsoid.R
 \name{runif_ellipsoid}
 \alias{runif_ellipsoid}
+\alias{runif_on_ellipse}
 \alias{runif_on_ellipsoid}
 \alias{runif_in_ellipsoid}
 \title{Uniform sampling on/in ellipsoid}
 \usage{
+runif_on_ellipse(n, A, r)
+
 runif_on_ellipsoid(n, A, r)
 
 runif_in_ellipsoid(n, A, r)
@@ -14,7 +17,8 @@ runif_in_ellipsoid(n, A, r)
 \item{n}{number of simulations}
 
 \item{A}{symmetric positive-definite matrix defining the ellipsoid (see
-Details)}
+Details), of size 2 for \code{runif_on_ellipse} and size 2 or 3 for 
+\code{runif_on_ellipsoid} (for size 2 these are the same functions)}
 
 \item{r}{"radius" (see Details)}
 }
@@ -22,12 +26,16 @@ Details)}
 The simulations in a matrix with \code{n} rows.
 }
 \description{
-Uniform sampling on an ellipsoid or in an ellipsoid (arbitrary
-  dimension).
+Uniform sampling on an ellipsoid or in an ellipsoid. 
+  The sampling \emph{in} an ellipsoid is available in arbitrary
+  dimension. The sampling \emph{on} an ellipsoid is available only in 
+  dimension 2 or 3.
 }
 \details{
 The ellipsoid is the set of vectors \code{x} satisfying
-\code{t(x) \%*\% A \%*\% x == r^2}.
+  \code{t(x) \%*\% A \%*\% x == r^2}. For example, for an axis-aligned 
+  ellipse with horizontal radius \code{a} and vertical radius \code{b}, take 
+  \code{A=1/diag(c(a^2,b^2))} and \code{r=1}.
 }
 \examples{
 library(uniformly)
@@ -43,7 +51,7 @@ z <- outer(
 )
 contour(x1, x2, z, nlevels = 1, levels = r^2, asp = 1, drawlabels = FALSE)
 # simulations on the perimeter
-sims <- runif_on_ellipsoid(60, A, r)
+sims <- runif_on_ellipse(60, A, r)
 points(sims, pch = 19, col = "blue")
 # simulations in the area
 sims <- runif_in_ellipsoid(100, A, r)

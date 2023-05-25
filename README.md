@@ -6,10 +6,10 @@
 
 ___ 
 
-- *Arbitrary dimension:* sampling on/in sphere, on/in ellipsoid, 
+- *Arbitrary dimension:* sampling on/in sphere, in ellipsoid, 
 on unit simplex, in simplex, on/in cube
 
-- *Dimension 3:* sampling on spherical patch, on spherical triangle, on 
+- *Dimension 3:* sampling on ellipsoid, spherical patch, on spherical triangle, on 
 spherical cap, on hemisphere, in tetrahedron, on/in torus
 
-- *Dimension 2:* sampling on/in triangle, in star-shaped polygon, in annulus
+- *Dimension 2:* sampling on ellipse, on/in triangle, in star-shaped polygon, in annulus
