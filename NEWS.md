@@ -1,4 +1,4 @@
-# uniformly 0.5.0
+# uniformly 0.4.0
 
 The uniform sampling on an ellipsoid was still wrong. It is now correct, but 
 available for dimension 2 or dimension 3 only.
