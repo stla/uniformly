@@ -82,7 +82,7 @@ runif_on_ellipse <- function(n, A, r){
   ssims <- runif_on_sphere(n, 2L, r = 1)
   allsims <- cbind(a*ssims[, 1L], b*ssims[, 2L])
   p <- a * sqrt(binv2*sq(ssims[, 2L]) + ainv2*sq(ssims[, 1L]))
-  accept <- runif(n) < p 
+  accept <- which(runif(n) < p) 
   sims <- allsims[accept, ]
   nsims <- length(accept)
   while(nsims < n) {
@@ -90,7 +90,7 @@ runif_on_ellipse <- function(n, A, r){
     ssims <- runif_on_sphere(newn, 2L, r = 1)
     allsims <- cbind(a*ssims[, 1L], b*ssims[, 2L])
     p <- a * sqrt(binv2*sq(ssims[, 2L]) + ainv2*sq(ssims[, 1L]))
-    accept <- runif(n) < p 
+    accept <- which(runif(newn) < p) 
     sims <- rbind(sims, allsims[accept, ])
     nsims <- nsims + length(accept)
   }
@@ -127,7 +127,7 @@ runif_on_ellipsoid <- function(n, A, r){
   p <- a * sqrt(
     binv2*sq(ssims[, 2L]) + cinv2*sq(ssims[, 3L]) + ainv2*sq(ssims[, 1L])
   )
-  accept <- runif(n) < p 
+  accept <- which(runif(n) < p) 
   sims <- allsims[accept, ]
   nsims <- length(accept)
   while(nsims < n) {
@@ -137,7 +137,7 @@ runif_on_ellipsoid <- function(n, A, r){
     p <- a * sqrt(
       binv2*sq(ssims[, 2L]) + cinv2*sq(ssims[, 3L]) + ainv2*sq(ssims[, 1L])
     )
-    accept <- runif(n) < p 
+    accept <- which(runif(newn) < p) 
     sims <- rbind(sims, allsims[accept, ])
     nsims <- nsims + length(accept)
   }
