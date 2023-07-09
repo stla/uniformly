@@ -83,7 +83,7 @@ runif_in_hexahedron <- function(n, hexahedron) {
   sims
 }
 
-sims <- runif_in_hexahedron(5000, hexahedron)
+sims <- runif_in_hexahedron(200, hexahedron)
 plotHexahedron(hexahedron, alpha = 0.2)
 points3d(sims)
 
@@ -102,3 +102,8 @@ in_hexahedron <- function(M, hexahedron) {
   in_tetrahedron(M, th1) || in_tetrahedron(M, th2) || in_tetrahedron(M, th3) || 
     in_tetrahedron(M, th4) || in_tetrahedron(M, th5)
 }
+
+sims_cube <- runif_in_cube(1000, d = 3, O = c(1, 1, 1), r = 1)
+inhx <- apply(sims_cube, 1L, function(M) in_hexahedron(M, hexahedron))
+8 * mean(inhx)
+volume_hexahedron(hexahedron)
