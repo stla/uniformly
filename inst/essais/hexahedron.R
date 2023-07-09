@@ -24,6 +24,7 @@ mesh <- qmesh3d(
 )
 
 shade3d(mesh, color = "yellow")
+wire3d(mesh, color = "black")
 
 
 # tetrahedra ####
