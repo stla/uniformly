@@ -1,3 +1,8 @@
+# uniformly 0.5.0
+
+Uniform sampling in a hexahedron.
+
+
 # uniformly 0.4.0
 
 The uniform sampling on an ellipsoid was still wrong. It is now correct, but 

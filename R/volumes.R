@@ -141,3 +141,41 @@ volume_torus <- function(R, r){
 volume_sphericalCap <- function(r, h){
   pi * h * h * (r - h/3)
 }
+
+#' Hexahedron volume
+#' @description Volume of a hexahedron.
+#'
+#' @param hexahedron a 3 times 8 matrix whose columns are the eight vertices 
+#'  of the hexahedron; see \code{\link{makeHexahedron}}
+#'
+#' @return The volume of the hexahedron.
+#' @export
+#'
+#' @examples
+#' library(uniformly)
+#' # a cube with side 2 ####
+#' hexahedron <- makeHexahedron(
+#'   p0 = c(0, 0, 0),
+#'   p1 = c(2, 0, 0),
+#'   p2 = c(2, 2, 0),
+#'   p3 = c(0, 2, 0),
+#'   p4 = c(0, 2, 2),
+#'   p5 = c(0, 0, 2),
+#'   p6 = c(2, 0, 2),
+#'   p7 = c(2, 2, 2)
+#' )
+#' volume_hexahedron(hexahedron) # should be 8
+volume_hexahedron <- function(hexahedron) {
+  vs <- tetrahedra_hexahedron(hexahedron)
+  vs1 <- vs[, , 1L]
+  vs2 <- vs[, , 2L]
+  vs3 <- vs[, , 3L]
+  vs4 <- vs[, , 4L]
+  vs5 <- vs[, , 5L]
+  vol1 <- volume_tetrahedron(vs1[, 1L], vs1[, 2L], vs1[, 3L], vs1[, 4L])
+  vol2 <- volume_tetrahedron(vs2[, 1L], vs2[, 2L], vs2[, 3L], vs2[, 4L])
+  vol3 <- volume_tetrahedron(vs3[, 1L], vs3[, 2L], vs3[, 3L], vs3[, 4L])
+  vol4 <- volume_tetrahedron(vs4[, 1L], vs4[, 2L], vs4[, 3L], vs4[, 4L])
+  vol5 <- volume_tetrahedron(vs5[, 1L], vs5[, 2L], vs5[, 3L], vs5[, 4L])
+  vol1 + vol2 + vol3 + vol4 + vol5  
+}
