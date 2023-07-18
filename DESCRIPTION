@@ -1,8 +1,8 @@
 Type: Package
 Package: uniformly
 Title: Uniform Sampling
-Version: 0.4.0.9000
-Date: 2023-07-??
+Version: 0.5.0
+Date: 2023-07-18
 Author: Stéphane Laurent
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
 Description: Uniform sampling on various geometric shapes, such as

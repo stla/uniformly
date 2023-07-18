@@ -9,8 +9,8 @@
 #' @export
 #' 
 #' @details
-#' A hexahedron is a polyhedron having six faces. Its eight vertices must be 
-#'   placed as in the figure below.
+#' A hexahedron is a polyhedron having six quad faces. Its eight vertices 
+#'   must be placed as in the figure below.
 #'   
 #' \if{html}{
 #'   \figure{hexahedron.png}{options: style="max-width:75\%;" alt="hexahedron"}
